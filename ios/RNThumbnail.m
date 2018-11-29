@@ -38,7 +38,7 @@ RCT_EXPORT_METHOD(get:(NSDictionary *)dictionary resolve:(RCTPromiseResolveBlock
         NSFileManager *fileManager = [NSFileManager defaultManager];
         [fileManager createFileAtPath:fullPath contents:data attributes:nil];
         if (resolve)
-            resolve(@{ @"path" : fullPath,
+            resolve(@{ @"path" : [NSString stringWithFormat:@"file://%@",fullPath],
                        @"width" : [NSNumber numberWithFloat: thumbnail.size.width],
                        @"height" : [NSNumber numberWithFloat: thumbnail.size.height] });
     } @catch(NSException *e) {
